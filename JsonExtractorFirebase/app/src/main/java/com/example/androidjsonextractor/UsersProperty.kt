@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class UsersProperty(
        var data: List<Data>?
-
 )
 
 data class Data(
