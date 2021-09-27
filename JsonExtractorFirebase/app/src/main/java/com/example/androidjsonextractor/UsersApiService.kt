@@ -18,9 +18,10 @@ class UsersApiService{
         //this adds to back of BASE_URL
         suspend fun getAllUsers(): Response<UsersProperty>
 
-        //noted down this from using majorly two blogs
-        //https://johncodeos.com/how-to-parse-json-with-retrofit-converters-using-kotlin/
-        //and https://tutorials.eu/json-parsing-and-how-to-use-gson-in-android/#ftoc-heading-17
+        //mars real estate app you remember we use only REsponse why?
+        //When the data class model structure is non changing.
+        //json uses Response
+
 
     }
 
