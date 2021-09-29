@@ -25,6 +25,7 @@ class UsersAdapter(val context: Context,val mItemsList: UsersProperty): Recycler
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        val sz = mItemsList.data?.size///the app is going to crash if the size is empty....
+        return sz!!//a good way to prevent !! could be a try catch block?
     }
 }

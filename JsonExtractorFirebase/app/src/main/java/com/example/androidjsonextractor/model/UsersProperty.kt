@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class UsersProperty(
     var data: List<Data>?,
-    var text1: String?,
-    var text2: String?
+    var text1: String?,//empty data
+    var text2: String?//empty data
 )
 
