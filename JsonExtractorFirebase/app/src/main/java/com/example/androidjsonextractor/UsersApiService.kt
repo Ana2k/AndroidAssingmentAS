@@ -7,7 +7,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-class UsersApiService{
+
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(JacksonConverterFactory.create())
@@ -16,15 +16,14 @@ class UsersApiService{
     interface UsersApiService{
         @GET("users")
         //this adds to back of BASE_URL
-        suspend fun getAllUsers(): Response<UsersProperty>
+        suspend fun getAllUsers(): UsersProperty
 
         //mars real estate app you remember we use only REsponse why?
         //When the data class model structure is non changing.
         //json uses Response
-
-
+    }//expensive call so create an object
+    object UsersApi{
+        val retrofitService: UsersApiService by lazy {
+            retrofit.create(UsersApiService::class.java)
+        }
     }
-
-
-
-}
