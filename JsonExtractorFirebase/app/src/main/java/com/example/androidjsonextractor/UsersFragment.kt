@@ -19,12 +19,12 @@ class UsersFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //val view = inflater.inflate(R.layout.fragment_user_list,container,false)
-        //do we need this view at all?
+
         val binding = FragmentUserListBinding.inflate(inflater)
 
         initViewModel(binding)
         return binding.root
+        //HACKTOBER FEST IS AWESOME...
     }
 
 
