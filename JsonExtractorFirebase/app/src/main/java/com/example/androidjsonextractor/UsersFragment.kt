@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidjsonextractor.databinding.FragmentUserListBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -23,11 +24,12 @@ class UsersFragment: Fragment() {
         //do we need this view at all?
         val binding = FragmentUserListBinding.inflate(inflater)
 
-        initViewModel(binding)
+        initViewModel(binding)//ERROR, itemsUsers not initialised.
         return binding.root
     }
 
 
+    @DelicateCoroutinesApi
     private fun initViewModel(binding: FragmentUserListBinding) {
         GlobalScope.launch{
             itemsUsers = UsersApi.retrofitService.getAllUsers()
@@ -39,7 +41,7 @@ class UsersFragment: Fragment() {
         recyclerView.addItemDecoration(decoration)
 
         ///adapter
-        recyclerView.adapter = UsersAdapter(requireContext(),itemsUsers)
+        recyclerView.adapter = UsersAdapter(requireContext(),itemsUsers)//ERROR, itemsUser not initialised
         //https://medium.com/@jencisov/androids-data-binding-with-kotlin-df94a24ffc0f
         //for the plugins that were added and how they worked.
     }
