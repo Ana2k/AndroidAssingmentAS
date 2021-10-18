@@ -10,3 +10,6 @@
         android:label="UsersFragment"
         tools:layout="@layout/fragment_user_list"/>
 </navigation>
+<!--<best article i found on navgraph so far-->
+<!--<//https://medium.com/@muhamed.riyas/navigation-component-the-complete-guide-c51c9911684-->
+<!--    //for overall code writing-->

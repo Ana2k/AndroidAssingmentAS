@@ -40,7 +40,8 @@ class UsersFragment: Fragment() {
 
         ///adapter
         recyclerView.adapter = UsersAdapter(requireContext(),itemsUsers)
-
+        //https://medium.com/@jencisov/androids-data-binding-with-kotlin-df94a24ffc0f
+        //for the plugins that were added and how they worked.
     }
 
 }
