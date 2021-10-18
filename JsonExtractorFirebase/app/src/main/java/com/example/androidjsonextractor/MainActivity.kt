@@ -33,6 +33,6 @@ class MainActivity : AppCompatActivity() {//we have used the navigation based ar
         navGraph.startDestination = R.id.usersFragment
         navController.graph = navGraph
     }
-
-
 }
+//build gradle multi dex was giving wierd errors read this article and tried to fix it
+//https://askandroidquestions.com/2021/06/06/2-files-found-with-path-androidsupportmultidexversion-txt-from-inputs-2/
