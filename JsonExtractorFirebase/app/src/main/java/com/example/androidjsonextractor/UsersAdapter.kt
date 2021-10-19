@@ -18,7 +18,6 @@ class UsersAdapter(val context: Context,val mItemsList: UsersProperty): Recycler
 
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
-
         val items = mItemsList.data//this is the entire list
         val singleItem = items?.get(position)
         holder.bind(singleItem)

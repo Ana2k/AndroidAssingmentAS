@@ -16,7 +16,7 @@ private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
     interface UsersApiService{
         @GET("users")
         //this adds to back of BASE_URL
-        suspend fun getAllUsers(): UsersProperty
+        suspend fun getAllUsers(): ArrayList<UsersProperty>
 
         //mars real estate app you remember we use only REsponse why?
         //When the data class model structure is non changing.
@@ -27,3 +27,6 @@ private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
             retrofit.create(UsersApiService::class.java)
         }
     }
+
+//https://tutorialwing.com/retrofit-library-with-recyclerview-in-kotlin-example/
+//EXACTLY AN APP LIKE THIS WAS NEEDED...slowly from the base then builded up...

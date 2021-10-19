@@ -21,17 +21,25 @@ class MainActivity : AppCompatActivity() {//we have used the navigation based ar
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       //setup navgraph here
+        //initNavGraph()
+        //seems that i dont need this code.
+        //bcs appStartDestination is set out in navgraph.
+    }
+
+    private fun initNavGraph() {
+        //setup navgraph here
         //https://stackoverflow.com/questions/50730494/new-navigation-component-from-arch-with-nested-navigation-graph
         //good article to understand the flow of this.
         //https://medium.com/@muhamed.riyas/navigation-component-the-complete-guide-c51c9911684
         //for overall code writing
-        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val host: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val graphInflater = host.navController.navInflater
         val navController = host.navController
         val navGraph = graphInflater.inflate(R.navigation.nav_graph)
         navGraph.startDestination = R.id.usersFragment
-        navController.graph = navGraph
+        //so error in UserFragments file checked by commenting it out
+       navController.graph = navGraph
     }
 }
 //build gradle multi dex was giving wierd errors read this article and tried to fix it

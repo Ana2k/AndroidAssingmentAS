@@ -8,7 +8,7 @@
         android:id="@+id/usersFragment"
         android:name="com.example.androidjsonextractor.UsersFragment"
         android:label="UsersFragment"
-        tools:layout="@layout/fragment_user_list"/>
+        tools:layout="@layout/fragment_users"/>
 </navigation>
 <!--<best article i found on navgraph so far-->
 <!--<//https://medium.com/@muhamed.riyas/navigation-component-the-complete-guide-c51c9911684-->
