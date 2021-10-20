@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidjsonextractor.databinding.ItemLayoutBinding
 import com.example.androidjsonextractor.model.UsersProperty
 
-class UsersAdapter(val context: Context,val mItemsList: ArrayList<UsersProperty>): RecyclerView.Adapter<UsersViewHolder>() {
+class UsersAdapter(val context: Context,val mItemsList: List<UsersProperty>): RecyclerView.Adapter<UsersViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemLayoutBinding.inflate(inflater,parent,false)

@@ -1,14 +1,10 @@
 package com.example.androidjsonextractor.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Company(
-    @JsonProperty("name")
-    val companyName: String?,
-    @JsonProperty("catchPhrase")
-    val companyCatchPhrase: String?,
-    @JsonProperty("bs")
-    val companyBs: String?
+    val name: String?,
+    val catchPhrase: String?,
+    val bs: String?
 )
 //"name": "Romaguera-Crona",
 //      "catchPhrase": "Multi-layered client-server neural-net",
