@@ -1,6 +1,7 @@
 package com.example.androidjsonextractor
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +10,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.androidjsonextractor.databinding.FragmentUsersBinding
+import com.example.androidjsonextractor.model.UsersProperty
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
+
+
 class UsersFragment: Fragment() {
 
+    private val TAG = "Inside UsersFragment"
     private var itemsUsers: ArrayList<UsersProperty>? = null//instead of lateinit we are trying this.
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,12 +31,15 @@ class UsersFragment: Fragment() {
         //do we need this view at all?
         val binding = FragmentUsersBinding.inflate(inflater)
         initRetrofitCall(binding)//ERROR, itemsUsers not initialised.
-        //initialiseRecyclerView(binding)
 
+        Log.d(TAG,"Did the REtrofit Call-- in onCreate")
+        //initialiseRecyclerView(binding)
+        Log.d(TAG,"Did the RecyclerView Call-- in onCreate")
         return binding.root
     }
 
     private fun initialiseRecyclerView(binding: FragmentUsersBinding) {
+
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(activity)
         val decoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
@@ -46,7 +54,9 @@ class UsersFragment: Fragment() {
     @DelicateCoroutinesApi
     private fun initRetrofitCall(binding: FragmentUsersBinding) {
         GlobalScope.launch {
+            Log.d(TAG,"Inside initRetrofitCall -- global Scope")
             itemsUsers = UsersApi.retrofitService.getAllUsers()
+            Log.d(TAG, itemsUsers.toString())
         }
     }
 }

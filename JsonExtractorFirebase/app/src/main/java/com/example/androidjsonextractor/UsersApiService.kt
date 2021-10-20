@@ -1,5 +1,6 @@
 package com.example.androidjsonextractor
 
+import com.example.androidjsonextractor.model.UsersProperty
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit

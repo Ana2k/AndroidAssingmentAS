@@ -2,10 +2,10 @@ package com.example.androidjsonextractor
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidjsonextractor.databinding.ItemLayoutBinding
-import com.example.androidjsonextractor.model.Data
+import com.example.androidjsonextractor.model.UsersProperty
 
 class UsersViewHolder(private val binding: ItemLayoutBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(singleItem: Data?) {//Data is the UsersProperty custom data type of list.. check UsersProperty
+        fun bind(singleItem: UsersProperty?) {//Data is the UsersProperty custom data type of list.. check UsersProperty
                 binding.id.text = singleItem?.userId
                 binding.name.text = singleItem?.name
                 binding.userName.text = singleItem?.userName
