@@ -33,7 +33,6 @@ class UsersFragment: Fragment() {
        //initialiseRecyclerView(binding)
 
         return binding.root
-        //HACKTOBER FEST IS AWESOME...
     }
 
 
