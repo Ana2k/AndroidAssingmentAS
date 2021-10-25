@@ -42,27 +42,26 @@ class UsersFragment: Fragment() {
 
     @DelicateCoroutinesApi
     private fun initREtrofitRecyclerViewCall(binding: FragmentUsersBinding) {
+        //REcycler view until adapter attatchment
+        val recyclerView = binding.recyclerView
+        Log.d("RecyclerView1",recyclerView.toString())
+        recyclerView.layoutManager = LinearLayoutManager(activity)//ERROR here with the layout.???Only the original thread that created a view hierarchy can touch its views.
+        Log.d("RecyclerView2",recyclerView.layoutManager.toString())
+        val decoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
+        recyclerView.addItemDecoration(decoration)
+        Log.d("RecyclerView3",recyclerView.toString())
+
         GlobalScope.launch {
             Log.d(TAG,"Inside initRetrofitCall -- global Scope")
             try {
                 itemsUsers = UsersApi.retrofitService.getAllUsers()
-//                Log.d(TAG, itemsUsers.toString())
             }
             catch (e:Exception){
                 Log.d("ERROR",e.toString())
             }
 
-            //RECYCLER VIEW
-            val recyclerView = binding.recyclerView
-            Log.d("RecyclerView1",recyclerView.toString())
-            recyclerView.layoutManager = LinearLayoutManager(activity)//ERROR here with the layout.???
-            Log.d("RecyclerView2",recyclerView.layoutManager.toString())
-            val decoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
-            recyclerView.addItemDecoration(decoration)
-            Log.d("RecyclerView3",recyclerView.toString())
+            //RECYCLER VIEW adapter
 
-            ///adapter
-            recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers) //ERROR, itemsUser not initialised
             Log.d("RecyclerView",recyclerView.adapter.toString())
             Log.d("RecyclerView4",itemsUsers.toString())
 
@@ -70,6 +69,10 @@ class UsersFragment: Fragment() {
         }
         //https://github.com/peculiaruc/RickyandMortyApp/tree/master/app/src/main/java/com/pecpacker/rickyandmortyapp
         //for basic skeleton trying to refer this.
+
+        recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers)
+        //actually corotuines being asynchronous this runs in parallel to calling and creating the itemsUser from retrofit.
+        //if there is some other lifecycle end function we can attatch the recycler view there.
     }
 
 
