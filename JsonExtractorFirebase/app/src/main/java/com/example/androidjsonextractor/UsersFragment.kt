@@ -21,33 +21,26 @@ import kotlinx.coroutines.launch
 class UsersFragment: Fragment() {
 
     private val TAG = "Inside UsersFragment"
-    private var itemsUsers: List<UsersProperty>? = null//instead of lateinit we are trying this.
+    private lateinit var itemsUsers: List<UsersProperty>//instead of lateinit we are trying this.
     private lateinit var binding: FragmentUsersBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-<<<<<<< HEAD
     ): View {
-        //val view = inflater.inflate(R.layout.fragment_user_list,container,false)
-        //do we need this view at all?
+
         binding = FragmentUsersBinding.inflate(inflater)
-=======
-    ): View? {
+       //initialiseRecyclerView(binding)
 
-        val binding = FragmentUserListBinding.inflate(inflater)
->>>>>>> main
-
-        Log.d(TAG,"Did the REtrofit Call-- in onCreate")
-        initialiseRecyclerView(binding)
-        Log.d(TAG,"Did the RecyclerView Call-- in onCreate")
         return binding.root
         //HACKTOBER FEST IS AWESOME...
     }
 
 
+    @DelicateCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG,"OnViewCreated Called")
         initRetrofitCall()//ERROR, itemsUsers not initialised.
     }
 
@@ -59,17 +52,19 @@ class UsersFragment: Fragment() {
         recyclerView.addItemDecoration(decoration)
 
         ///adapter
-        recyclerView.adapter =
-            itemsUsers?.let { UsersAdapter(requireContext(), it) }//ERROR, itemsUser not initialised
+        recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers) //ERROR, itemsUser not initialised
     }
 
 
+    @DelicateCoroutinesApi
     private fun initRetrofitCall() {
         GlobalScope.launch {
             Log.d(TAG,"Inside initRetrofitCall -- global Scope")
             itemsUsers = UsersApi.retrofitService.getAllUsers()
             Log.d(TAG, itemsUsers.toString())
         }
+        //https://github.com/peculiaruc/RickyandMortyApp/tree/master/app/src/main/java/com/pecpacker/rickyandmortyapp
+        //for basic skeleton trying to refer this.
     }
 
 

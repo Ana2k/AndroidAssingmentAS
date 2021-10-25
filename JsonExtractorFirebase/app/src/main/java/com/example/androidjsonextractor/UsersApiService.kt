@@ -1,5 +1,6 @@
 package com.example.androidjsonextractor
 
+import android.util.Log
 import com.example.androidjsonextractor.model.UsersProperty
 
 import retrofit2.Retrofit
@@ -7,6 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+private const val TAG = "Inside UsersApi"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -14,7 +16,7 @@ private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
         .build()
 
     interface UsersApiService{
-        @GET("users")
+        @GET()
         //this adds to back of BASE_URL
         suspend fun getAllUsers(): List<UsersProperty>
 
@@ -22,10 +24,14 @@ private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
         //When the data class model structure is non changing.
         //json uses Response
     }//expensive call so create an object
+
     object UsersApi{
         val retrofitService: UsersApiService by lazy {
+
             retrofit.create(UsersApiService::class.java)
+
         }
+
     }
 
 //https://tutorialwing.com/retrofit-library-with-recyclerview-in-kotlin-example/

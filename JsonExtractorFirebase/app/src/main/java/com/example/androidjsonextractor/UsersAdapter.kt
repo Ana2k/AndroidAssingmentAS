@@ -20,7 +20,7 @@ class UsersAdapter(val context: Context,val mItemsList: List<UsersProperty>): Re
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         val items = mItemsList//this is the entire list
-        val singleItem = items.get(position)
+        val singleItem = items[position]
         holder.bind(singleItem)
     }
 
