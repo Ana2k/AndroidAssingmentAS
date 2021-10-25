@@ -28,10 +28,7 @@ class UsersFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentUsersBinding.inflate(inflater)
-       //initialiseRecyclerView(binding)
-
         return binding.root
     }
 
@@ -40,27 +37,36 @@ class UsersFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG,"OnViewCreated Called")
-        initRetrofitCall()//ERROR, itemsUsers not initialised.
+        initREtrofitRecyclerViewCall(binding)//the @GET() call was not right. it should have ebeen @GET(<extension base url>)
     }
-
-    private fun initialiseRecyclerView(binding: FragmentUsersBinding) {
-
-        val recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        val decoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
-        recyclerView.addItemDecoration(decoration)
-
-        ///adapter
-        recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers) //ERROR, itemsUser not initialised
-    }
-
 
     @DelicateCoroutinesApi
-    private fun initRetrofitCall() {
+    private fun initREtrofitRecyclerViewCall(binding: FragmentUsersBinding) {
         GlobalScope.launch {
             Log.d(TAG,"Inside initRetrofitCall -- global Scope")
-            itemsUsers = UsersApi.retrofitService.getAllUsers()
-            Log.d(TAG, itemsUsers.toString())
+            try {
+                itemsUsers = UsersApi.retrofitService.getAllUsers()
+//                Log.d(TAG, itemsUsers.toString())
+            }
+            catch (e:Exception){
+                Log.d("ERROR",e.toString())
+            }
+
+            //RECYCLER VIEW
+            val recyclerView = binding.recyclerView
+            Log.d("RecyclerView1",recyclerView.toString())
+            recyclerView.layoutManager = LinearLayoutManager(activity)//ERROR here with the layout.???
+            Log.d("RecyclerView2",recyclerView.layoutManager.toString())
+            val decoration = DividerItemDecoration(activity, DividerItemDecoration.HORIZONTAL)
+            recyclerView.addItemDecoration(decoration)
+            Log.d("RecyclerView3",recyclerView.toString())
+
+            ///adapter
+            recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers) //ERROR, itemsUser not initialised
+            Log.d("RecyclerView",recyclerView.adapter.toString())
+            Log.d("RecyclerView4",itemsUsers.toString())
+
+
         }
         //https://github.com/peculiaruc/RickyandMortyApp/tree/master/app/src/main/java/com/pecpacker/rickyandmortyapp
         //for basic skeleton trying to refer this.

@@ -1,22 +1,21 @@
 package com.example.androidjsonextractor
 
-import android.util.Log
 import com.example.androidjsonextractor.model.UsersProperty
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-private const val TAG = "Inside UsersApi"
+private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
+private const val EXTENSION_BASE_URL = "/users"
 
     interface UsersApiService{
-        @GET()
+        @GET(EXTENSION_BASE_URL)
         //this adds to back of BASE_URL
         suspend fun getAllUsers(): List<UsersProperty>
 
