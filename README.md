@@ -13,6 +13,10 @@ I have not used View Model in this one. So you have to umplement that yourself.(
 
 UI--> Can be much improved. but its a pretty neat template for our use (^_^).
 
-App uses mostly latest architecture and builds dated...25th Oct'21
+--->only the navgraph branchh for this works fully.
+---> Fragment Transaction is outdated--buggy--does not run. 
+Due to better creation pattern of android navigation -- using jetpack navigation (navgraph). I have not updated this branch at all as well.
+
+Main App using navgraph uses mostly latest architecture and builds dated...25th Oct'21
 
 <!-- * https://docs.google.com/document/d/1zdX5NJ_sYd12ZtVg7tUQQ2O5JW7BJWdp5bSEZHcqVWU/edit -- some info regarding Json Extractor App and its moving ahead. -->
