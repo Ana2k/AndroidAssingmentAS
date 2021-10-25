@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidjsonextractor.databinding.FragmentUsersBinding
 import com.example.androidjsonextractor.model.UsersProperty
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -51,10 +52,15 @@ class UsersFragment: Fragment() {
         recyclerView.addItemDecoration(decoration)
         Log.d("RecyclerView3",recyclerView.toString())
 
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.Main) {
+            //I LITERALLY DONT UNDERSTAND DISPATCHERS ANYMORE.... T_T
+            //Corotuines were running asyn and colliding with each other T_T
+            //sth like a bus topology ?? but with collision :(
             Log.d(TAG,"Inside initRetrofitCall -- global Scope")
             try {
                 itemsUsers = UsersApi.retrofitService.getAllUsers()
+                recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers)
+
             }
             catch (e:Exception){
                 Log.d("ERROR",e.toString())
@@ -70,7 +76,6 @@ class UsersFragment: Fragment() {
         //https://github.com/peculiaruc/RickyandMortyApp/tree/master/app/src/main/java/com/pecpacker/rickyandmortyapp
         //for basic skeleton trying to refer this.
 
-        recyclerView.adapter = UsersAdapter(requireContext(), itemsUsers)
         //actually corotuines being asynchronous this runs in parallel to calling and creating the itemsUser from retrofit.
         //if there is some other lifecycle end function we can attatch the recycler view there.
     }
