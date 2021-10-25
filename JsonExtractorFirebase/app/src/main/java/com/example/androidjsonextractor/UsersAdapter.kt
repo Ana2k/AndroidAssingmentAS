@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidjsonextractor.databinding.ItemLayoutBinding
+import com.example.androidjsonextractor.model.UsersProperty
 
-class UsersAdapter(val context: Context,val mItemsList: UsersProperty): RecyclerView.Adapter<UsersViewHolder>() {
+class UsersAdapter(val context: Context,val mItemsList: List<UsersProperty>): RecyclerView.Adapter<UsersViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemLayoutBinding.inflate(inflater,parent,false)
@@ -18,14 +19,13 @@ class UsersAdapter(val context: Context,val mItemsList: UsersProperty): Recycler
 
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
-
-        val items = mItemsList.data//this is the entire list
-        val singleItem = items?.get(position)
+        val items = mItemsList//this is the entire list
+        val singleItem = items[position]
         holder.bind(singleItem)
     }
 
     override fun getItemCount(): Int {
-        val sz = mItemsList.data?.size///the app is going to crash if the size is empty....
-        return sz!!//a good way to prevent !! could be a try catch block?
+        val sz = mItemsList.size///the app is going to crash if the size is empty....
+        return sz//a good way to prevent !! could be a try catch block?
     }
 }
