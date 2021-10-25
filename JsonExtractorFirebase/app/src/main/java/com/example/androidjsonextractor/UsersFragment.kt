@@ -27,15 +27,22 @@ class UsersFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+<<<<<<< HEAD
     ): View {
         //val view = inflater.inflate(R.layout.fragment_user_list,container,false)
         //do we need this view at all?
         binding = FragmentUsersBinding.inflate(inflater)
+=======
+    ): View? {
+
+        val binding = FragmentUserListBinding.inflate(inflater)
+>>>>>>> main
 
         Log.d(TAG,"Did the REtrofit Call-- in onCreate")
         initialiseRecyclerView(binding)
         Log.d(TAG,"Did the RecyclerView Call-- in onCreate")
         return binding.root
+        //HACKTOBER FEST IS AWESOME...
     }
 
 

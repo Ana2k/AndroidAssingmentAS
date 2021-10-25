@@ -14,8 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 //https://medium.com/@anoopg87/set-start-destination-for-navhostfragment-dynamically-b072a29bfe49
 
 class MainActivity : AppCompatActivity() {//we have used the navigation based architecture here.
-    //for other architecture types of navigation
-    //you can refer to FragmentMenuNavGraph or RecyclerViewYT app
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
