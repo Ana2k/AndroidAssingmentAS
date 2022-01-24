@@ -27,4 +27,4 @@ Due to better creation pattern of android navigation -- using jetpack navigation
 
 ___________________________________________________________________________________________________________________________________________________________________
 - [ ] APP2
-Make a note making app in which you can add, delete and update notes using firebase as your database. You should also send a notification when a new note is added. Use fragments instead of activities.
+Currently benched by me, app in which you can add, delete and update notes using firebase as your database. You should also send a notification when a new note is added. Use fragments instead of activities.
