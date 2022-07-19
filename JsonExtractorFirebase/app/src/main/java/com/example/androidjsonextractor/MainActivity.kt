@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {//we have used the navigation based ar
         setContentView(R.layout.activity_main)
 
         //initNavGraph()
-        //seems that i dont need this code.
-        //bcs appStartDestination is set out in navgraph.
+        //seems that i dont need this code bcs
+        // appStartDestination is set out in navgraph.
     }
 
     private fun initNavGraph() {
