@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {//we have used the navigation based ar
     private fun initNavGraph() {
         //setup navgraph here
         //https://stackoverflow.com/questions/50730494/new-navigation-component-from-arch-with-nested-navigation-graph
-        //good article to understand the flow of this.
+        //good article to understand the flow of this
         //https://medium.com/@muhamed.riyas/navigation-component-the-complete-guide-c51c9911684
         //for overall code writing
         val host: NavHostFragment =
